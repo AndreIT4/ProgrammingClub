@@ -8,22 +8,26 @@ namespace ProgrammingClubM.Controllers
 {
     public class MemberController : Controller
     {
+        private Repository.MemberRepository memberRepository = new Repository.MemberRepository();
+
         // GET: Member
         public ActionResult Index()
         {
-            return View();
+            List<Models.MemberModel> members = memberRepository.GetAllMembers();
+            return View("Index", members);
         }
 
         // GET: Member/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            Models.MemberModel memberModel = memberRepository.GetMemberByID(id);
+            return View("MemberDetails", memberModel);
         }
 
         // GET: Member/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CreateMember");
         }
 
         // POST: Member/Create
@@ -32,57 +36,72 @@ namespace ProgrammingClubM.Controllers
         {
             try
             {
+
+                Models.MemberModel memberModel = new Models.MemberModel();
+
+                UpdateModel(memberModel);
+
+                memberRepository.InsertMember(memberModel);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("CreateMember");
             }
         }
 
         // GET: Member/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            Models.MemberModel memberModel = memberRepository.GetMemberByID(id);
+
+            return View("EditMember", memberModel);
         }
 
         // POST: Member/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                Models.MemberModel memberModel = new Models.MemberModel();
+
+                UpdateModel(memberModel);
+
+                memberRepository.UpdateMember(memberModel);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditMember");
             }
         }
 
         // GET: Member/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Models.MemberModel memberModel = memberRepository.GetMemberByID(id);
+
+            return View("DeleteMember", memberModel);
         }
 
         // POST: Member/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                memberRepository.DeleteMember(id);
+                
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteMember");
             }
         }
     }

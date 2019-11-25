@@ -34,7 +34,7 @@ namespace ProgrammingClubM.Repository
             return memberships;
         }
 
-        public MembershipModel GetMembershipTypeByID(Guid ID)
+        public MembershipModel GetMembershipsByID(Guid ID)
         {
             Models.DBObjects.Membership existingMember = dbContext.Memberships.FirstOrDefault(x => x.IDMembership == ID);
 

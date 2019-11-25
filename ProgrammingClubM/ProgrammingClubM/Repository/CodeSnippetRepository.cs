@@ -34,7 +34,7 @@ namespace ProgrammingClubM.Repository
 
         }
 
-        public CodeSnippetModel GetMemberByID(Guid ID)
+        public CodeSnippetModel GetCodeSnippetByID(Guid ID)
         {
             Models.DBObjects.CodeSnippet existingCodeSnippet = dbContext.CodeSnippets.FirstOrDefault(x => x.IDCodeSnippet == ID);
             if (existingCodeSnippet != null)

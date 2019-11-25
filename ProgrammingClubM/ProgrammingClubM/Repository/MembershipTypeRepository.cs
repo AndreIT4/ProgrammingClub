@@ -23,7 +23,7 @@ namespace ProgrammingClubM.Repository
 
         }
 
-        public List<MembershipTypeModel> GetAllMembers()
+        public List<MembershipTypeModel> GetAllMembershipTypes()
         {
             List<MembershipTypeModel> membershipTypes = new List<MembershipTypeModel>();
 

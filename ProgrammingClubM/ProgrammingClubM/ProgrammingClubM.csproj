@@ -183,9 +183,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
+    <Compile Include="Controllers\CodeSnippetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\MembershipController.cs" />
+    <Compile Include="Controllers\MembershipTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +206,8 @@
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MembershipModel.cs" />
     <Compile Include="Models\MembershipTypeModel.cs" />
+    <Compile Include="Models\RequiAttribute.cs" />
+    <Compile Include="Models\StringLenghtAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AnnouncementRepository.cs" />
     <Compile Include="Repository\CodeSnippetRepository.cs" />
@@ -279,8 +284,31 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Announcement\CreateAnnouncement.cshtml" />
     <Content Include="Views\Announcement\Index.cshtml" />
+    <Content Include="Views\Announcement\EditAnnouncement.cshtml" />
+    <Content Include="Views\Announcement\DeleteAnnouncement.cshtml" />
+    <Content Include="Views\Announcement\AnnouncementDetails.cshtml" />
+    <Content Include="Views\Member\CreateMember.cshtml" />
+    <Content Include="Views\Member\EditMember.cshtml" />
+    <Content Include="Views\Member\DeleteMember.cshtml" />
+    <Content Include="Views\Member\MemberDetails.cshtml" />
+    <Content Include="Views\Membership\CreateMembership.cshtml" />
+    <Content Include="Views\Membership\Index.cshtml" />
+    <Content Include="Views\MembershipType\CreateMembershipType.cshtml" />
+    <Content Include="Views\MembershipType\Index.cshtml" />
+    <Content Include="Views\MembershipType\EditMembershipType.cshtml" />
+    <Content Include="Views\MembershipType\DeleteMembershipType.cshtml" />
+    <Content Include="Views\MembershipType\MembershipTypeDetails.cshtml" />
+    <Content Include="Views\Membership\EditMembership.cshtml" />
+    <Content Include="Views\Membership\DeleteMembership.cshtml" />
+    <Content Include="Views\Membership\MembershipDetails.cshtml" />
+    <Content Include="Views\CodeSnippet\CreateCodeSnippet.cshtml" />
+    <Content Include="Views\CodeSnippet\Index.cshtml" />
+    <Content Include="Views\CodeSnippet\EditCodeSnippet.cshtml" />
+    <Content Include="Views\CodeSnippet\DeleteCodeSnippet.cshtml" />
+    <Content Include="Views\CodeSnippet\CodeSnippetDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -298,9 +326,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Member\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProgrammingClubM.Models
 {
@@ -13,10 +14,15 @@ namespace ProgrammingClubM.Models
 
         public Guid IDMembershipType { get; set; }
 
+        [Required(ErrorMessage = "Mandatory field")]
         public DateTime StartDate { get; set; }
 
+        [Required(ErrorMessage = "Mandatory field")]
+       
         public DateTime? EndDate { get; set; }
 
+        [Required(ErrorMessage = "Mandatory field")]
+       
         public int Level { get; set; }
     }
 }

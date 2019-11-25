@@ -12,6 +12,8 @@ namespace ProgrammingClubM.Repository
     {
         private Models.DBObjects.ClubMembershipModelsDataContext dbContext;
 
+        public Guid Id { get; private set; }
+
         public AnnouncementRepository()
         {
             this.dbContext = new Models.DBObjects.ClubMembershipModelsDataContext();
@@ -50,6 +52,15 @@ namespace ProgrammingClubM.Repository
             announcement.IDAnnouncement = Guid.NewGuid();
             dbContext.Announcements.InsertOnSubmit(announcement.MapObject<Models.DBObjects.Announcement>());
             dbContext.SubmitChanges();
+        }
+
+        public AnnouncementModel GetAnnouncementByID(Guid id)
+        {
+            Models.DBObjects.Announcement existingAnnouncement = dbContext.Announcements.FirstOrDefault(x => x.IDAnnouncement == id);
+            if (existingAnnouncement != null)
+                return existingAnnouncement.MapObject<AnnouncementModel>();
+            else
+                return null;
         }
 
         public void UpdateAnnouncement(AnnouncementModel announcementModel)
