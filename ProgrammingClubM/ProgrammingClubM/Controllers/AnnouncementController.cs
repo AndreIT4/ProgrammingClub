@@ -11,6 +11,7 @@ namespace ProgrammingClubM.Controllers
         private Repository.AnnouncementRepository announcementRepository = new Repository.AnnouncementRepository();
 
         // GET: Announcement
+        
         public ActionResult Index()
         {
             List<Models.AnnouncementModel> announcements = announcementRepository.GetAllAnnouncements();
@@ -18,6 +19,7 @@ namespace ProgrammingClubM.Controllers
         }
 
         // GET: Announcement/Details/5
+   
         public ActionResult Details(Guid id)
         {
             Models.AnnouncementModel announcementModel = announcementRepository.GetAnnouncementByID(id);
@@ -27,12 +29,14 @@ namespace ProgrammingClubM.Controllers
         }
 
         // GET: Announcement/Create
+        
         public ActionResult Create()
         {
             return View("CreateAnnouncement");
         }
 
         // POST: Announcement/Create
+        
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,6 +46,12 @@ namespace ProgrammingClubM.Controllers
                 Models.AnnouncementModel announcementModel = new Models.AnnouncementModel();
 
                 UpdateModel(announcementModel);
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    announcementModel.Title = User.Identity.Name + " : " + announcementModel.Title;
+                    announcementModel.Tags = announcementModel.Tags + " , " + User.Identity.Name;
+                }
 
                 announcementRepository.InsertAnnouncement(announcementModel);
 
@@ -56,6 +66,7 @@ namespace ProgrammingClubM.Controllers
         }
 
         // GET: Announcement/Edit/5
+       
         public ActionResult Edit(Guid id)
         {
             Models.AnnouncementModel announcementModel = announcementRepository.GetAnnouncementByID(id);
@@ -64,6 +75,7 @@ namespace ProgrammingClubM.Controllers
         }
 
         // POST: Announcement/Edit/5
+        
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
         {
@@ -85,6 +97,7 @@ namespace ProgrammingClubM.Controllers
         }
 
         // GET: Announcement/Delete/5
+       
         public ActionResult Delete(Guid id)
         {
             Models.AnnouncementModel announcementModel = announcementRepository.GetAnnouncementByID(id);
@@ -92,6 +105,7 @@ namespace ProgrammingClubM.Controllers
         }
 
         // POST: Announcement/Delete/5
+        
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)
         {
